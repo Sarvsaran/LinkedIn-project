@@ -14,6 +14,24 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    // Password validation
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+    if (!passwordRegex.test(formData.password)) {
+      setError(
+        "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character."
+      );
+      return;
+    }
+
     try {
       setLoading(true);
       setError(false);
@@ -38,7 +56,7 @@ function Signup() {
     }
   };
   return (
-    <div className="p-3 max-w-lg mx-auto mt-7 bg-teal-700 rounded-lg shadow-lg">
+    <div className="p-3 max-w-lg mx-auto mt-7 bg-[#D8EFD3] rounded-lg shadow-lg">
       <h1 className="text-3xl text-center font-semibold my-7">
         Registration Page
       </h1>
@@ -66,7 +84,7 @@ function Signup() {
         />
         <button
           disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+          className="bg-[#55AD9B] text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Create Account"}
         </button>
@@ -78,7 +96,7 @@ function Signup() {
           <span className="text-blue-500">Log in</span>
         </Link>
       </div>
-      <p className="text-red-700 mt-5">{error && "Something went wrong!"}</p>
+      <p className="text-red-700 mt-5">{error && error}</p>
     </div>
   );
 }

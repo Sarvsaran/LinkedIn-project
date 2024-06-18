@@ -37,7 +37,7 @@ function Login() {
     }
   };
   return (
-    <div className="p-3 max-w-lg mx-auto mt-7 bg-teal-700 rounded-lg shadow-lg">
+    <div className="p-3 max-w-lg mx-auto mt-7 bg-[#D8EFD3] rounded-lg shadow-lg">
       <h1 className="text-3xl text-center font-semibold my-7">Login</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
@@ -56,7 +56,7 @@ function Login() {
         />
         <button
           disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+          className="bg-[#55AD9B] text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Login"}
         </button>
